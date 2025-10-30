@@ -73,7 +73,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   Padding(
                     padding: EdgeInsets.only(bottom: 16),
                     child: Text(
-                      'Hungry? XX',
+                      'Hungry?',
                       style: TextStyle(
                         fontFamily: 'inter',
                         fontWeight: FontWeight.w700,
