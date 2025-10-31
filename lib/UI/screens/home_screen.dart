@@ -6,6 +6,7 @@ import 'package:flutter_project_1/UI/widgets/category_card.dart';
 import 'package:flutter_project_1/UI/widgets/recipe_tile.dart';
 import 'package:flutter_project_1/cubit/auth_cubit.dart';
 import 'package:flutter_project_1/cubit/recipes_cubit.dart';
+import 'package:flutter_project_1/cubit/recipes_states.dart';
 import 'package:flutter_project_1/data/models/recipe.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -84,21 +85,50 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          BlocBuilder<RecipesCubit, List<Recipe>>(
-            builder: (BuildContext context, List<Recipe> state) {
+          BlocBuilder<RecipesCubit, RecipesStates>(
+            builder: (BuildContext context, RecipesStates state) {
+              if (state is RecipesLoadingState) {
+                return Container(
+                  height: 200,
+                  alignment: Alignment.center,
+                  child: CircularProgressIndicator(),
+                );
+              }
+
+              if (state is RecipesErrorState) {
+                return Container(
+                  padding: EdgeInsets.all(16),
+                  child: Column(
+                    children: [
+                      Text('Failed to load recipes', style: TextStyle(color: Colors.red)),
+                      SizedBox(height: 8),
+                      Text(state.errorMessage),
+                      SizedBox(height: 12),
+                      ElevatedButton(
+                        onPressed: () => context.read<RecipesCubit>().fetchRecipesFromApi(),
+                        child: Text('Retry'),
+                      ),
+                    ],
+                  ),
+                );
+              }
+
+              // RecipesSuccessState
+              var recipes = <Recipe>[];
+              if (state is RecipesSuccessState) recipes = state.recipes;
+
               return Container(
                 padding: EdgeInsets.all(16),
                 width: MediaQuery.of(context).size.width,
-                // Use a non-scrolling inner list so the outer ListView handles scrolling.
                 child: ListView.separated(
-                  itemCount: state.length,
+                  itemCount: recipes.length,
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   separatorBuilder: (context, index) {
                     return SizedBox(height: 16);
                   },
                   itemBuilder: (context, index) {
-                    return RecipeTile(data: state[index]);
+                    return RecipeTile(data: recipes[index]);
                   },
                 ),
               );
