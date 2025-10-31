@@ -28,7 +28,7 @@ class AuthCubit extends Cubit<AuthStates> {
   }
 
   bool isRecipeBookmarked(int recipeId) {
-    var bookmarkedRecipeIds = getBookmarkedRecipeIds();
+    final bookmarkedRecipeIds = getBookmarkedRecipeIds();
     return bookmarkedRecipeIds.contains(recipeId);
   }
 
@@ -49,10 +49,11 @@ class AuthCubit extends Cubit<AuthStates> {
     );
 
     emit(AuthSuccessState(updatedUser));
-    RecipesAppSqliteDb.updateUserBookmarksInDb(
-      currentUser.id,
-      bookmarkedRecipeIds,
-    );
+
+    RecipesAppSqliteDb.updateUserBookmarksInDb(currentUser.id, bookmarkedRecipeIds)
+        .catchError((e) {
+      print('Failed to persist bookmarks: $e');
+    });
   }
 
   logout() {

@@ -83,7 +83,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     ),
                   ),
                   Text(
-                    "Help you when you're hungry",
+                    "Let's fix that",
                     style: TextStyle(color: Colors.white),
                   ),
                 ],

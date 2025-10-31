@@ -4,10 +4,16 @@ import 'package:flutter_project_1/UI/widgets/recipe_tile.dart';
 import 'package:flutter_project_1/data/models/recipe.dart';
 
 class RecipeListScreen extends StatelessWidget {
-  const RecipeListScreen({super.key, required this.title, required this.recipes});
   final List<Recipe> recipes;
   final String title;
+  final bool showBackButton;
 
+  const RecipeListScreen({
+    super.key,
+    required this.recipes,
+    this.title = 'Recipes',
+    this.showBackButton = false,
+  });
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +31,14 @@ class RecipeListScreen extends StatelessWidget {
             color: Colors.white,
           ),
         ),
+        // show back button only when requested
+        leading: showBackButton
+            ? IconButton(
+                icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+                onPressed: () => Navigator.of(context).pop(),
+              )
+            : null,
+        automaticallyImplyLeading: showBackButton,
       ),
       //should i transfer this logic somewhere else? answer:
       body: Container(

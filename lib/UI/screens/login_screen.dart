@@ -18,6 +18,7 @@ class LoginScreen extends StatelessWidget {
     return BlocListener<AuthCubit, AuthStates>(
       listener: (BuildContext context, state) {
         if (state is AuthSuccessState) {
+          Navigator.popUntil(context, (_) => !Navigator.canPop(context));
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
