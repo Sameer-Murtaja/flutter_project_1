@@ -38,7 +38,7 @@ Optional for desktop SQLite debugging:
 Run the following from the project root:
 
 ```powershell
-cd "c:\\flutter_project_1"
+cd path\to\project
 flutter pub get
 flutter analyze
 flutter run
@@ -57,6 +57,37 @@ flutter run
 ```powershell
 flutter build apk --release
 ```
+
+
+## UI Preview 📸
+
+<table>
+  <tr>
+    <th>Welcome Screen</th>
+    <th>Signup</th>
+    <th>Login</th>
+  </tr>
+  <tr>
+    <td valign="top"><img src="https://github.com/user-attachments/assets/f1563066-8866-4aff-824d-91d49dd2493b" /></td>
+    <td valign="top"><img src="https://github.com/user-attachments/assets/5f98b11a-6018-4944-960e-5a758211fb26" /></td>
+    <td valign="top"><img src="https://github.com/user-attachments/assets/02b1bf23-63dd-4d2a-a7bb-b43b4a108a90" /></td>
+  </tr>
+  <tr>
+    <th>Home</th>
+    <th>Bookmarks</th>
+    <th>Recipe Details</th>
+  </tr>
+  <tr>
+    <td valign="top"><img src="https://github.com/user-attachments/assets/27677af2-92d0-428b-885d-be3afe5357d1" /></td>
+    <td valign="top"><img src="https://github.com/user-attachments/assets/91ea5868-e185-4966-a823-c092a46bc6b9" /></td>
+    <td valign="top"><img src="https://github.com/user-attachments/assets/6f57c435-5034-41b6-b112-d02ac05f962e" /></td>
+   </tr>
+   <tr>
+    <th colspan="3">App Demo 🎥</th>
+   </tr>
+</table>
+
+---
 
 ## Notes: Database & desktop
 
