@@ -47,7 +47,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: ListView( 
+      body: ListView(
         children: [
           Container(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -91,7 +91,7 @@ class HomeScreen extends StatelessWidget {
                 return Container(
                   height: 200,
                   alignment: Alignment.center,
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator(color: AppColor.primarySoft,),
                 );
               }
 
@@ -100,13 +100,31 @@ class HomeScreen extends StatelessWidget {
                   padding: EdgeInsets.all(16),
                   child: Column(
                     children: [
-                      Text('Failed to load recipes', style: TextStyle(color: Colors.red)),
-                      SizedBox(height: 8),
-                      Text(state.errorMessage),
+                      Text(
+                        'Failed to load recipes..',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                      Text(
+                        'Check your internet connection',
+                        style: TextStyle(color: Colors.red),
+                      ),
                       SizedBox(height: 12),
                       ElevatedButton(
-                        onPressed: () => context.read<RecipesCubit>().fetchRecipesFromApi(),
-                        child: Text('Retry'),
+                        onPressed: () =>
+                            context.read<RecipesCubit>().fetchRecipesFromApi(),
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          backgroundColor: AppColor.primarySoft,
+                        ),
+                        child: Text(
+                          'Retry',
+                          style: TextStyle(
+                            color: AppColor.secondary,
+                            fontFamily: 'inter',
+                          ),
+                        ),
                       ),
                     ],
                   ),
