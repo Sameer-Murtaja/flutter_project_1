@@ -82,9 +82,6 @@ flutter build apk --release
     <td valign="top"><img src="https://github.com/user-attachments/assets/91ea5868-e185-4966-a823-c092a46bc6b9" /></td>
     <td valign="top"><img src="https://github.com/user-attachments/assets/6f57c435-5034-41b6-b112-d02ac05f962e" /></td>
    </tr>
-   <tr>
-    <th colspan="3">App Demo 🎥</th>
-   </tr>
 </table>
 
 ---
